@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/activity_horizontal_margin">
+
+    <TextView
+        android:id="@+id/avg_mpg_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="27.5"
+        android:textSize="22sp"/>
+
+    <TextView
+        android:id="@+id/date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/avg_mpg_tv"
+        android:layout_gravity="center"
+        android:text="Nov 5, 2014"/>
+
+    <TextView
+        android:id="@+id/amount_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/avg_mpg_tv"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:text="$52.38"
+        android:textSize="22sp"/>
+
+    <TextView
+        android:id="@+id/fuel_brand_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/avg_mpg_tv"
+        android:layout_toLeftOf="@id/amount_tv"
+        android:layout_toRightOf="@id/date_tv"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:singleLine="true"
+        android:text="Chevron"
+        android:textSize="22sp"/>
+
+</RelativeLayout>
