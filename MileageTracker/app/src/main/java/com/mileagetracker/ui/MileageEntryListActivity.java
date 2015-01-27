@@ -10,6 +10,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,11 @@ public class MileageEntryListActivity extends ActionBarActivity {
 			adapter = new EntryListAdapter(mileageEntries);
 			entryListRecyclerView.setAdapter(adapter);
 		}
+
+		Toolbar toolBar = (Toolbar) findViewById(R.id.toolbar);
+		setSupportActionBar(toolBar);
+
+		setTitle("Gas Station Trips");
 	}
 
 	public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.ViewHolder> {
@@ -73,9 +79,9 @@ public class MileageEntryListActivity extends ActionBarActivity {
 		public void onBindViewHolder(ViewHolder viewHolder, int position) {
 			MileageRecord record = records.get(position);
 
-			viewHolder.avgMpgTV.setText(String.valueOf(record.getMpg()));
+			viewHolder.avgMpgTV.setText(String.valueOf(Math.round(record.getMpg())));
 			viewHolder.brandTV.setText(record.getFuelBrand());
-			viewHolder.amountTV.setText(String.valueOf(record.getAmount()));
+			viewHolder.amountTV.setText(String.valueOf("$" + record.getAmount()));
 
 			Date entryDate = new Date(record.getEntryTimeMillis());
 			String date = new SimpleDateFormat("MMM dd", Locale.US).format(entryDate);

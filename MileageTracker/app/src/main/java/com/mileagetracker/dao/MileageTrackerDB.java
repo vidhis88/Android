@@ -93,8 +93,7 @@ public class MileageTrackerDB {
 		HashMap<String, String> map = new HashMap<String, String>();
 		//			map.put(KEY_WORD, KEY_WORD);
 		//			map.put(KEY_DEFINITION, KEY_DEFINITION);
-		map.put(BaseColumns._ID, "rowid AS " +
-				BaseColumns._ID);
+		map.put(BaseColumns._ID, "rowid AS " + BaseColumns._ID);
 		map.put(SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID, "rowid AS " +
 				SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID);
 		map.put(SearchManager.SUGGEST_COLUMN_SHORTCUT_ID, "rowid AS " +

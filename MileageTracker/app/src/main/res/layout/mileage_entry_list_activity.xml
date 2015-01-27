@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/entry_list_recycler_view"
+<LinearLayout
+    android:id="@+id/entry_list_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="vertical"
-    android:divider="@android:color/darker_gray"
-    android:dividerHeight="5dp"/>
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        android:minHeight="50dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/entry_list_recycler_view"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="5dp"
+        android:scrollbars="vertical"/>
+</LinearLayout>

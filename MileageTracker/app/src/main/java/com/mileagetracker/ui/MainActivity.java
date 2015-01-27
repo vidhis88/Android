@@ -66,9 +66,9 @@ public class MainActivity extends ActionBarActivity {
 		int id = item.getItemId();
 
 		//noinspection SimplifiableIfStatement
-		if (id == R.id.action_settings) {
-			return true;
-		}
+//		if (id == R.id.action_settings) {
+//			return true;
+//		}
 
 		return super.onOptionsItemSelected(item);
 	}
@@ -89,6 +89,8 @@ public class MainActivity extends ActionBarActivity {
 			rootView.findViewById(R.id.fab_button).setOnClickListener(this);
 			rootView.findViewById(R.id.avg_mpg_layout).setOnClickListener(this);
 
+			getActivity().setTitle("MPG");
+
 			return rootView;
 		}
 
@@ -102,6 +104,7 @@ public class MainActivity extends ActionBarActivity {
 			}
 			((TextView) rootView.findViewById(R.id.title_text)).setText(vehicleName + "'s average MPG (Miles per Gallon):");
 			float mpg = MileageTrackerDB.getInstance(getActivity()).getAvgMpg();
+			mpg = Math.round(mpg);
 			((TextView) rootView.findViewById(R.id.average_mpg)).setText(String.valueOf(mpg));
 		}
 
@@ -133,6 +136,8 @@ public class MainActivity extends ActionBarActivity {
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			rootView = inflater.inflate(R.layout.user_profile_fragment, container, false);
 			rootView.findViewById(R.id.save_vehicle_info_btn).setOnClickListener(this);
+
+			getActivity().setTitle("Vehicle Profile");
 
 			return rootView;
 		}
@@ -174,8 +179,12 @@ public class MainActivity extends ActionBarActivity {
 				if (ed != null) {
 					String name = String.valueOf(ed.getText());
 					if (TextUtils.isEmpty(name)) {
-						int vehicleIndex = MileageTrackerDB.getInstance(activity).getNumVehicles() + 1;
-						name = "Vehicle " + String.valueOf(vehicleIndex);
+						name = vehicle.getMake();
+
+						if (TextUtils.isEmpty(name)) {
+							int vehicleIndex = MileageTrackerDB.getInstance(activity).getNumVehicles() + 1;
+							name = "Vehicle " + String.valueOf(vehicleIndex);
+						}
 					}
 					vehicle.setName(name);
 				}
