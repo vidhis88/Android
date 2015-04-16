@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,8 +79,6 @@ public class VehiclePerformanceFragment extends Fragment implements View.OnClick
 
 	@Override
 	public void onClick(View v) {
-		Log.w("Vidhi", "in onClick");
-
 		if (v.getId() == R.id.fab_button) {
 			Intent intent = new Intent();
 			intent.setClassName(getActivity(), EnterMileageDetailsActivity.class.getName());

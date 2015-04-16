@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.mileagetracker.R;
@@ -71,7 +70,6 @@ public class LineGraph extends View {
 
 	@Override
 	public void onSizeChanged(int width, int height, int oldWidth, int oldHeight) {
-		Log.i("Vidhi", "height is " + height);
 		this.width = width;
 		processAndScalePoints();
 
