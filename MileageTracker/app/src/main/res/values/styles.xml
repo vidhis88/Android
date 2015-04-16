@@ -19,7 +19,6 @@
         <item name="android:gravity">center</item>
         <item name="android:textAppearance">?android:textAppearanceLarge</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
     </style>
@@ -30,6 +29,43 @@
 
     <style name="Item.Bottom.Alt">
         <item name="android:background">@color/bottom_item_alt</item>
+    </style>
+
+    <style name="FullScreen">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="FullScreen.Vertical">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="MainFragment" parent="FullScreen.Vertical">
+        <item name="android:padding">@dimen/vertical_padding</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+
+    <style name="AvgMpgLayout" parent="FullScreen.Vertical">
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingTop">@dimen/avg_mpg_vpad</item>
+    </style>
+
+    <style name="TitleText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="SubtitleText" parent="TitleText">
+        <item name="android:textSize">@dimen/avg_mpg_text_Size</item>
+        <item name="android:paddingBottom">@dimen/avg_mpg_tv_padding_bottom</item>
+    </style>
+
+    <style name="AvgMpgLayout.LineGraph">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:paddingTop">@dimen/no_padding</item>
     </style>
 
 </resources>

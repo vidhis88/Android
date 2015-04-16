@@ -7,5 +7,6 @@
 
     <string name="sticky_item">Sticky</string>
     <string name="quick_return_item">Quick Return</string>
+    <string name="plus_sign">+</string>
 
 </resources>

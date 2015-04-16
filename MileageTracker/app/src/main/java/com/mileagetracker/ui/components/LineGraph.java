@@ -7,6 +7,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import com.mileagetracker.R;
+
 /**
  * Created by vshah2 on 2/26/15.
  */
@@ -35,7 +37,7 @@ public class LineGraph extends View {
 
 //		DashPathEffect dashPathEffect = new DashPathEffect(new float[]{20, 20}, 0);
 		cutOffPaint = new Paint();
-		cutOffPaint.setARGB(255, 255, 0, 0);
+		cutOffPaint.setColor(context.getResources().getColor(R.color.cut_off_color));
 		cutOffPaint.setStrokeWidth(5);
 		cutOffPaint.setStyle(Paint.Style.STROKE);
 //		cutOffPaint.setPathEffect(dashPathEffect);
