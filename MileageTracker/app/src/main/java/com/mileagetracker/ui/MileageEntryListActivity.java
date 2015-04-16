@@ -86,7 +86,7 @@ public class MileageEntryListActivity extends ActionBarActivity {
 			Date entryDate = new Date(record.getEntryTimeMillis());
 			String date = new SimpleDateFormat("MMM dd", Locale.US).format(entryDate);
 			try {
-				if (entryDate.before(new SimpleDateFormat("MM dd yyyy", Locale.US).parse("Jan 01, " + Calendar.getInstance().get(Calendar.YEAR)))) {
+				if (entryDate.before(new SimpleDateFormat("MMM dd, yyyy", Locale.US).parse("Jan 01, " + Calendar.getInstance().get(Calendar.YEAR)))) {
 					date = new SimpleDateFormat("MMM dd, yyyy", Locale.US).format(entryDate);
 				}
 			} catch (ParseException e) {
