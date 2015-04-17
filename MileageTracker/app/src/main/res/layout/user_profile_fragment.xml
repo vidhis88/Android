@@ -1,70 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            style="@style/Wrapper.Height">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="@dimen/activity_horizontal_margin">
+        style="@style/FullScreen.Vertical"
+        android:padding="@dimen/horizontal_pad">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/spacing_between_views"
-            android:text="Describe your driving machine"
-            android:textSize="15sp"/>
+            style="@style/ProfileElements.TitleText"/>
 
         <EditText
             android:id="@+id/current_mpg_ed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_between_views"
-            android:hint="Current gas mileage"/>
+            style="@style/ProfileElements"
+            android:hint="@string/hint_current_mpg"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/spacing_between_views"
-            android:text="More details (Optional)"
-            android:textSize="15sp"/>
+            style="@style/MoreDetailsText"/>
 
         <EditText
             android:id="@+id/make_ed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_between_views"
-            android:hint="Make"/>
+            style="@style/ProfileElements"
+            android:hint="@string/hint_make"/>
 
         <EditText
             android:id="@+id/model_ed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_between_views"
-            android:hint="Model"/>
+            style="@style/ProfileElements"
+            android:hint="@string/hint_model"/>
 
         <EditText
             android:id="@+id/year_ed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_between_views"
-            android:hint="Year"/>
+            style="@style/ProfileElements"
+            android:hint="@string/hint_year"/>
 
         <EditText
             android:id="@+id/name_ed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_between_views"
-            android:hint="Does it have a name?"/>
+            style="@style/ProfileElements"
+            android:hint="@string/hint_name"/>
 
         <Button
             android:id="@+id/save_vehicle_info_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/spacing_between_views"
-            android:text="Add New Vehicle"/>
+            style="@style/SaveBtn"/>
 
     </LinearLayout>
 </ScrollView>

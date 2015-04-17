@@ -31,6 +31,15 @@
         <item name="android:background">@color/bottom_item_alt</item>
     </style>
 
+    <style name="Wrapper">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Wrapper.Height">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
     <style name="FullScreen">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -40,8 +49,29 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+    <style name="ProfileElements" parent="Wrapper.Height">
+        <item name="android:layout_marginBottom">@dimen/spacing_between_views</item>
+    </style>
+
+    <style name="ProfileElements.TitleText">
+        <item name="android:text">@string/profile_title_text</item>
+        <item name="android:textSize">@dimen/profile_title_text_size</item>
+    </style>
+
+    <style name="MoreDetailsText" parent="Wrapper.Height">
+        <item name="android:paddingBottom">@dimen/spacing_between_views</item>
+        <item name="android:text">@string/more_details_text</item>
+        <item name="android:textSize">@dimen/profile_title_text_size</item>
+    </style>
+
+    <style name="SaveBtn" parent="Wrapper">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:text">@string/save_btn_text</item>
+        <item name="android:layout_marginTop">@dimen/spacing_between_views</item>
+    </style>
+
     <style name="MainFragment" parent="FullScreen.Vertical">
-        <item name="android:padding">@dimen/vertical_padding</item>
+        <item name="android:padding">@dimen/vertical_pad</item>
         <item name="android:clipToPadding">false</item>
     </style>
 
@@ -52,20 +82,43 @@
         <item name="android:paddingTop">@dimen/avg_mpg_vpad</item>
     </style>
 
-    <style name="TitleText">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+    <style name="TitleText" parent="Wrapper.Height">
         <item name="android:gravity">center_horizontal</item>
     </style>
 
     <style name="SubtitleText" parent="TitleText">
-        <item name="android:textSize">@dimen/avg_mpg_text_Size</item>
-        <item name="android:paddingBottom">@dimen/avg_mpg_tv_padding_bottom</item>
+        <item name="android:textSize">@dimen/avg_mpg_text_size</item>
+        <item name="android:paddingBottom">@dimen/avg_mpg_tv_bottom_pad</item>
     </style>
 
     <style name="AvgMpgLayout.LineGraph">
         <item name="android:layout_gravity">center</item>
         <item name="android:paddingTop">@dimen/no_padding</item>
+    </style>
+
+    <style name="MileageText" parent="Wrapper">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/mileage_text_size</item>
+    </style>
+
+    <style name="DateText" parent="Wrapper">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/date_text_size</item>
+        <item name="android:minEms">5</item>
+    </style>
+
+    <style name="FuelBrandText" parent="MileageText">
+        <item name="android:gravity">left</item>
+        <item name="android:paddingLeft">@dimen/horizontal_pad</item>
+        <item name="android:paddingRight">@dimen/horizontal_pad</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="UnitText" parent="MileageText">
+        <item name="android:paddingLeft">@dimen/unit_left_pad</item>
+        <item name="android:paddingRight">@dimen/spacing_between_views</item>
+        <item name="android:textSize">@dimen/unit_text_size</item>
+        <item name="android:text">@string/unit_text</item>
     </style>
 
 </resources>

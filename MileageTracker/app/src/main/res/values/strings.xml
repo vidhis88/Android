@@ -8,5 +8,14 @@
     <string name="sticky_item">Sticky</string>
     <string name="quick_return_item">Quick Return</string>
     <string name="plus_sign">+</string>
+    <string name="unit_text">mpg</string>
+    <string name="save_btn_text">Add New Vehicle</string>
+    <string name="more_details_text">More details (Optional)</string>
+    <string name="profile_title_text">Describe your driving machine</string>
+    <string name="hint_name">Does it have a name?</string>
+    <string name="hint_year">Year</string>
+    <string name="hint_model">Model</string>
+    <string name="hint_make">Make</string>
+    <string name="hint_current_mpg">Current gas mileage</string>
 
 </resources>
