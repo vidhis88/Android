@@ -1,6 +1,7 @@
 package com.mileagetracker.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -51,7 +52,7 @@ public class MileageEntryListActivity extends ActionBarActivity {
 			linearLayoutManager = new LinearLayoutManager(this);
 			entryListRecyclerView.setLayoutManager(linearLayoutManager);
 
-			adapter = new EntryListAdapter(mileageEntries);
+			adapter = new EntryListAdapter(this, mileageEntries);
 			entryListRecyclerView.setAdapter(adapter);
 		}
 
@@ -62,9 +63,11 @@ public class MileageEntryListActivity extends ActionBarActivity {
 	}
 
 	public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.ViewHolder> {
+		private Context context;
 		private List<MileageRecord> records;
 
-		public EntryListAdapter(List<MileageRecord> records) {
+		public EntryListAdapter(Context context, List<MileageRecord> records) {
+			this.context = context;
 			this.records = records;
 		}
 
@@ -72,6 +75,7 @@ public class MileageEntryListActivity extends ActionBarActivity {
 		public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 			View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mileage_entry_item, parent, false);
 			ViewHolder viewHolder = new ViewHolder(view);
+
 			return viewHolder;
 		}
 
@@ -93,6 +97,8 @@ public class MileageEntryListActivity extends ActionBarActivity {
 				e.printStackTrace();
 			}
 			viewHolder.dateTV.setText(date);
+
+			viewHolder.setItemIntent(context, record.getRecordId());
 		}
 
 		@Override
@@ -100,7 +106,7 @@ public class MileageEntryListActivity extends ActionBarActivity {
 			return records.size();
 		}
 
-		public class ViewHolder extends RecyclerView.ViewHolder {
+		public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 			TextView avgMpgTV;
 			TextView dateTV;
 			TextView brandTV;
@@ -108,11 +114,28 @@ public class MileageEntryListActivity extends ActionBarActivity {
 
 			public ViewHolder(View itemView) {
 				super(itemView);
+				itemView.setOnClickListener(this);
 
 				avgMpgTV = (TextView) itemView.findViewById(R.id.avg_mpg_tv);
 				dateTV = (TextView) itemView.findViewById(R.id.date_tv);
 				brandTV = (TextView) itemView.findViewById(R.id.fuel_brand_tv);
 				amountTV = (TextView) itemView.findViewById(R.id.amount_tv);
+			}
+
+			public void setItemIntent(Context context, long id) {
+				Intent intent = new Intent();
+				intent.putExtra("item_id", id);
+				intent.setClassName(context, MileageDetailsActivity.Show.class.getName());
+
+				setIntent(intent);
+			}
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = getIntent();
+				if (intent != null) {
+					startActivity(intent);
+				}
 			}
 		}
 	}

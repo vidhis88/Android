@@ -19,8 +19,12 @@
         </activity>
 
         <activity
-            android:name="com.mileagetracker.ui.EnterMileageDetailsActivity"
+            android:name=".ui.MileageDetailsActivity$Enter"
             android:exported="false"/>
+
+        <activity
+            android:name=".ui.MileageDetailsActivity$Show"
+            android:exported="false" />
 
         <activity
             android:name="com.mileagetracker.ui.MileageEntryListActivity"

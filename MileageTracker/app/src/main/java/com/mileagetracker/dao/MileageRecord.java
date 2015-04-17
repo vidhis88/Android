@@ -5,6 +5,7 @@ package com.mileagetracker.dao;
  */
 public class MileageRecord {
 
+	private long recordId;
 	private int odometerReading;
 	private float gallonsFilled;
 	private float amount;
@@ -12,6 +13,14 @@ public class MileageRecord {
 	private String fuelBrand;
 	private float mpg;
 	private long entryTimeMillis;
+
+	public long getRecordId() {
+		return this.recordId;
+	}
+
+	public void setRecordId(long recordId) {
+		this.recordId = recordId;
+	}
 
 	public int getOdometerReading() {
 		return odometerReading;

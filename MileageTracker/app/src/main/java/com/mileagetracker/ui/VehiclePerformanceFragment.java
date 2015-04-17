@@ -81,7 +81,7 @@ public class VehiclePerformanceFragment extends Fragment implements View.OnClick
 	public void onClick(View v) {
 		if (v.getId() == R.id.fab_button) {
 			Intent intent = new Intent();
-			intent.setClassName(getActivity(), EnterMileageDetailsActivity.class.getName());
+			intent.setClassName(getActivity(), MileageDetailsActivity.Enter.class.getName());
 			startActivity(intent);
 		} else if (v.getId() == R.id.avg_mpg_layout) {
 			Intent intent = new Intent();

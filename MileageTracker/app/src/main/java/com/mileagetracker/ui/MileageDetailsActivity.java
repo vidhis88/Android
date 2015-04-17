@@ -16,7 +16,7 @@ import java.util.Calendar;
 /**
  * Created by vshah2 on 10/27/14.
  */
-public class EnterMileageDetailsActivity extends ActionBarActivity implements View.OnClickListener {
+public abstract class MileageDetailsActivity extends ActionBarActivity implements View.OnClickListener {
 
 	private EditText odometerReadingEd;
 	private EditText milesDrivenEd;
@@ -46,8 +46,6 @@ public class EnterMileageDetailsActivity extends ActionBarActivity implements Vi
 
 		Calendar calendar = Calendar.getInstance();
 		dateTV.setText(String.valueOf(calendar.getTime()));
-
-		findViewById(R.id.save_btn).setOnClickListener(this);
 	}
 
 	@Override
@@ -60,6 +58,8 @@ public class EnterMileageDetailsActivity extends ActionBarActivity implements Vi
 			findViewById(R.id.miles_driven_layout).setVisibility(View.VISIBLE);
 			milesDrivenEd.setVisibility(View.GONE);
 		}
+
+		adjustUI();
 
 		super.onResume();
 	}
@@ -103,6 +103,42 @@ public class EnterMileageDetailsActivity extends ActionBarActivity implements Vi
 			}
 
 			MileageTrackerDB.getInstance(this.getApplicationContext()).addRecord(record);
+		}
+	}
+
+	protected abstract void adjustUI();
+
+	public static class Enter extends MileageDetailsActivity {
+
+		@Override
+		protected void adjustUI() {
+			findViewById(R.id.save_btn).setOnClickListener(this);
+		}
+	}
+
+	public static class Show extends MileageDetailsActivity {
+		private long recordId;
+
+		@Override
+		public void onCreate(Bundle savedInstanceState) {
+			Bundle extras = getIntent().getExtras();
+			if (extras != null && extras.containsKey("item_id")) {
+				recordId = extras.getLong("item_id");
+			}
+
+			super.onCreate(savedInstanceState);
+		}
+
+		@Override
+		protected void adjustUI() {
+			if (recordId == 0) {
+				finish();
+			} else {
+				findViewById(R.id.save_btn).setVisibility(View.GONE);
+
+				MileageRecord record = MileageTrackerDB.getInstance(this).getRecordById(recordId);
+				//TODO: show the data
+			}
 		}
 	}
 }

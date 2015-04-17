@@ -121,4 +121,10 @@
         <item name="android:text">@string/unit_text</item>
     </style>
 
+    <style name="FullScreen.RecordsList">
+        <item name="android:divider">@android:color/darker_gray</item>
+        <item name="android:dividerHeight">@dimen/recview_div_height</item>
+        <item name="android:scrollbars">vertical</item>
+    </style>
+
 </resources>

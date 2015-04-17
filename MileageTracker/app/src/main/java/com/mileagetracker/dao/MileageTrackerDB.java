@@ -40,6 +40,7 @@ public class MileageTrackerDB {
 					VEHICLE_NAME_KEY + " VARCHAR(30) NOT NULL)";
 
 	//The columns we'll include in the Mileage Tracker table
+	private static final String ROW_ID_KEY = "rowid";
 	private static final String ODOMETER_READING_KEY = "odometer_reading";
 	private static final String GALLONS_FILLED_KEY = "gallons_filled";
 	private static final String AMOUNT_KEY = "amount";
@@ -136,6 +137,7 @@ public class MileageTrackerDB {
 
 		if (c != null && c.moveToFirst()) {
 			record = new MileageRecord();
+			record.setRecordId(c.getLong(c.getColumnIndex(ROW_ID_KEY)));
 			record.setOdometerReading(c.getInt(0));
 			record.setGallonsFilled(c.getFloat(1));
 			record.setAmount(c.getFloat(2));
@@ -195,7 +197,7 @@ public class MileageTrackerDB {
 	}
 
 	public String getVehicleNameById(long vehicleId) {
-		Cursor c = db.query(VEHICLE_INFO_TABLE, new String[]{VEHICLE_NAME_KEY}, "rowid=?", new String[]{String.valueOf(vehicleId)}, null, null, null);
+		Cursor c = db.query(VEHICLE_INFO_TABLE, new String[]{VEHICLE_NAME_KEY}, ROW_ID_KEY + "=?", new String[]{String.valueOf(vehicleId)}, null, null, null);
 		if (c != null && c.moveToFirst()) {
 			return c.getString(0);
 		}
@@ -206,16 +208,17 @@ public class MileageTrackerDB {
 	public List<MileageRecord> getAllRecordsByVehicleId(long vehicleId) {
 		List<MileageRecord> records = new ArrayList<MileageRecord>();
 
-		String[] columns = new String[]{MPG_KEY, AMOUNT_KEY, FUEL_BRAND_KEY, ENTRY_TS_KEY};
+		String[] columns = new String[]{ROW_ID_KEY, MPG_KEY, AMOUNT_KEY, FUEL_BRAND_KEY, ENTRY_TS_KEY};
 		Cursor c = db.query(MILEAGE_DETAILS_TABLE, columns, VEHICLE_ID_KEY + "=?", new String[]{String.valueOf(vehicleId)}, null, null, ENTRY_TS_KEY + " DESC");
 		if (c != null && c.moveToFirst()) {
 			do {
 				MileageRecord record = new MileageRecord();
-				record.setMpg(c.getFloat(0));
-				record.setAmount(c.getFloat(1));
-				record.setFuelBrand(c.getString(2));
+				record.setRecordId(c.getLong(0));
+				record.setMpg(c.getFloat(1));
+				record.setAmount(c.getFloat(2));
+				record.setFuelBrand(c.getString(3));
 
-				long timeInMillis = c.getLong(3)* 1000;
+				long timeInMillis = c.getLong(4)* 1000;
 				record.setEntryTimeMillis(timeInMillis);
 
 				records.add(record);
@@ -223,6 +226,26 @@ public class MileageTrackerDB {
 		}
 
 		return records;
+	}
+
+	public MileageRecord getRecordById(long recordId) {
+		String[] columns = new String[]{ROW_ID_KEY, MPG_KEY, AMOUNT_KEY, FUEL_BRAND_KEY, ENTRY_TS_KEY};
+		Cursor c = db.query(MILEAGE_DETAILS_TABLE, columns, ROW_ID_KEY + "=?", new String[]{String.valueOf(recordId)}, null, null, null);
+
+		if (c != null && c.moveToFirst()) {
+			MileageRecord record = new MileageRecord();
+			record.setRecordId(c.getLong(0));
+			record.setMpg(c.getFloat(1));
+			record.setAmount(c.getFloat(2));
+			record.setFuelBrand(c.getString(3));
+
+			long timeInMillis = c.getLong(4) * 1000;
+			record.setEntryTimeMillis(timeInMillis);
+
+			return record;
+		}
+
+		return  null;
 	}
 
 	/**
