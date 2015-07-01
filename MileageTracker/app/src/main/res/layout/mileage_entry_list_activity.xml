@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/entry_list_layout"
-    style="@style/FullScreen.Vertical">
+<android.support.design.widget.CoordinatorLayout android:id="@+id/entry_list_layout"
+    style="@style/FullScreen"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mtrack="http://schemas.android.com/apk/res-auto">
 
-    <include layout="@layout/toolbar"/>
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            layout="@layout/toolbar"/>
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/entry_list_recycler_view"
-        style="@style/FullScreen.RecordsList"/>
-</LinearLayout>
+        style="@style/FullScreen.RecordsList"
+        mtrack:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</android.support.design.widget.CoordinatorLayout>

@@ -23,6 +23,7 @@ public class MileageTrackerDB {
 
 	private static final int DATABASE_VERSION = 1;
 	private static final String DATABASE_NAME = "mileage_tracker_schema";
+	private static final String ROW_ID_KEY = "rowid";
 
 	//The columns we'll include in the Vehicle Info table
 	private static final String VEHICLE_MAKE_KEY = "make";
@@ -34,13 +35,13 @@ public class MileageTrackerDB {
 
 	private static final String VEHICLE_INFO_TABLE_CREATE =
 			"CREATE TABLE " + VEHICLE_INFO_TABLE + " (" +
+					ROW_ID_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
 					VEHICLE_MAKE_KEY + " VARCHAR(20), " +
 					VEHICLE_MODEL_KEY + " VARCHAR(30), " +
 					VEHICLE_YEAR_KEY + " INT, " +
 					VEHICLE_NAME_KEY + " VARCHAR(30) NOT NULL)";
 
 	//The columns we'll include in the Mileage Tracker table
-	private static final String ROW_ID_KEY = "rowid";
 	private static final String ODOMETER_READING_KEY = "odometer_reading";
 	private static final String GALLONS_FILLED_KEY = "gallons_filled";
 	private static final String AMOUNT_KEY = "amount";
@@ -53,6 +54,7 @@ public class MileageTrackerDB {
 
 	private static final String MILEAGE_DETAILS_TABLE_CREATE =
 			"CREATE TABLE " + MILEAGE_DETAILS_TABLE + " (" +
+					ROW_ID_KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
 					ODOMETER_READING_KEY + " UNSIGNED INT, " +
 					GALLONS_FILLED_KEY + " FLOAT, " +
 					AMOUNT_KEY + " FLOAT, " +
@@ -137,10 +139,10 @@ public class MileageTrackerDB {
 
 		if (c != null && c.moveToFirst()) {
 			record = new MileageRecord();
-			record.setRecordId(c.getLong(c.getColumnIndex(ROW_ID_KEY)));
-			record.setOdometerReading(c.getInt(0));
-			record.setGallonsFilled(c.getFloat(1));
-			record.setAmount(c.getFloat(2));
+			record.setRecordId(c.getLong(0));
+			record.setOdometerReading(c.getInt(1));
+			record.setGallonsFilled(c.getFloat(2));
+			record.setAmount(c.getFloat(3));
 			record.setFuelBrand(c.getString(4));
 			record.setMpg(c.getFloat(5));
 			record.setEntryTimeMillis(c.getLong(6));
